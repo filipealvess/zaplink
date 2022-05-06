@@ -1,10 +1,16 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-export default function PrimaryButton({ text, onClick = () => {} }) {
+export default function PrimaryButton({
+  text,
+  disabled,
+  onClick = () => {}
+}) {
   return (
-    <button className={styles.container} onClick={onClick}>
-      {text}
-    </button>
+    <button
+      className={styles.container}
+      onClick={onClick}
+      disabled={disabled}
+    >{text}</button>
   );
 }

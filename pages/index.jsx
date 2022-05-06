@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 import Form from '../components/Form';
 import HelpButton from '../components/HelpButton';
 import Input from '../components/Input';
@@ -9,6 +9,8 @@ import RadioGroup from '../components/RadioGroup';
 import targets from '../static/targets';
 
 export default function Index() {
+  const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+
   return (
     <>
       <Head>
@@ -25,7 +27,7 @@ export default function Index() {
         <Input label="Número do celular" placeholder="(DDD) 0000-0000" type="tel" />
         <Input label="Mensagem" placeholder="Escreva o texto..." />
         <RadioGroup title="Destino do link" options={targets} />
-        <PrimaryButton text="Gerar Link" />
+        <PrimaryButton text="Gerar Link" disabled={buttonIsDisabled} />
       </Form>
 
       <HelpButton />

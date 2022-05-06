@@ -11,3 +11,9 @@
 .container:hover {
   background-color: #126FF9;
 }
+
+.container:disabled {
+  background-color: #3D4A64;
+  color: #FFFFFF55;
+  cursor: not-allowed;
+}
