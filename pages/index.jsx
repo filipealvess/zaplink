@@ -3,6 +3,8 @@ import React from 'react';
 import Form from '../components/Form';
 import Input from '../components/Input';
 import Introduction from '../components/Introduction';
+import RadioGroup from '../components/RadioGroup';
+import targets from '../static/targets';
 
 export default function Index() {
   return (
@@ -20,6 +22,7 @@ export default function Index() {
       <Form>
         <Input label="Número do celular" placeholder="(DDD) 0000-0000" type="tel" />
         <Input label="Mensagem" placeholder="Escreva o texto..." />
+        <RadioGroup title="Destino do link" options={targets} />
       </Form>
     </>
   );
