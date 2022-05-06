@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
+import Form from '../components/Form';
+import Input from '../components/Input';
 import Introduction from '../components/Introduction';
 
 export default function Index() {
@@ -14,6 +16,11 @@ export default function Index() {
       </Head>
 
       <Introduction />
+
+      <Form>
+        <Input label="Número do celular" placeholder="(DDD) 0000-0000" type="tel" />
+        <Input label="Mensagem" placeholder="Escreva o texto..." />
+      </Form>
     </>
   );
 }

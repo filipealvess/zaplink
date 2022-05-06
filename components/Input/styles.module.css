@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #3D4A64;
+}
+
+.input:-ms-input-placeholder { color: #909BA9; }
+.input::-webkit-input-placeholder { color: #909BA9; }
+.input::placeholder { color: #909BA9; }
