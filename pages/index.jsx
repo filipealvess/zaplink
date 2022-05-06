@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import Form from '../components/Form';
+import HelpButton from '../components/HelpButton';
 import Input from '../components/Input';
 import Introduction from '../components/Introduction';
 import PrimaryButton from '../components/PrimaryButton';
@@ -26,6 +27,8 @@ export default function Index() {
         <RadioGroup title="Destino do link" options={targets} />
         <PrimaryButton text="Gerar Link" />
       </Form>
+
+      <HelpButton />
     </>
   );
 }
