@@ -1,0 +1,13 @@
+.container {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #3F7DE8;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.3s background-color;
+}
+
+.container:hover {
+  background-color: #126FF9;
+}

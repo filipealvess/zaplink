@@ -9,8 +9,14 @@
 
 .input {
   padding: 10px 15px;
+  border: 2px solid transparent;
   border-radius: 5px;
   background-color: #3D4A64;
+  transition: 0.3s border-color;
+}
+
+.input:focus {
+  border-color: #697690;
 }
 
 .input:-ms-input-placeholder { color: #909BA9; }

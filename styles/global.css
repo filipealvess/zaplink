@@ -18,3 +18,7 @@ html { font-size: 10px; }
 body { background-color: #212A3B; }
 
 button { cursor: pointer; }
+
+@media (max-width: 500px) {
+  html { font-size: 9px; }
+}
