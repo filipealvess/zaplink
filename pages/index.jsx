@@ -7,7 +7,7 @@ import Introduction from '../components/Introduction';
 import PrimaryButton from '../components/PrimaryButton';
 import RadioGroup from '../components/RadioGroup';
 import targets from '../static/targets';
-import { applyPhoneMask } from '../controllers/phoneController';
+import { applyPhoneMask, phoneIsCompleted } from '../controllers/phoneController';
 import axios from 'axios';
 import WhatsappLink from '../components/WhatsappLink';
 import GuidePopup from '../components/GuidePopup';
@@ -25,7 +25,9 @@ export default function Index() {
 
   useEffect(() => {
     const phoneOrMessageAreEmpty = phone === '' || message === '';
-    setButtonIsDisabled(phoneOrMessageAreEmpty);
+    const phoneIsNotCompleted = !phoneIsCompleted(phone);
+
+    setButtonIsDisabled(phoneOrMessageAreEmpty || phoneIsNotCompleted);
   }, [phone, message]);
 
   const handlePhoneChange = ({ target: { value } }) => setPhone(applyPhoneMask(value));
