@@ -2,12 +2,14 @@ const targets = [
   {
     id: 0,
     title: 'Aplicativo',
-    isActive: true
+    isActive: true,
+    subdomain: 'api'
   },
   {
     id: 1,
     title: 'Whatsapp Web',
-    isActive: false
+    isActive: false,
+    subdomain: 'web'
   }
 ];
 

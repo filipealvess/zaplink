@@ -13,6 +13,9 @@ export default function Index() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+  const [selectedTarget, setSelectedTarget] = useState(() => {
+    return targets.filter(({ isActive }) => isActive)[0].title;
+  });
 
   function handlePhoneChange({ target }) {
     const formatedPhone = applyPhoneMask(target.value);
@@ -21,6 +24,10 @@ export default function Index() {
 
   function handleMessageChange({ target }) {
     setMessage(target.value);
+  }
+
+  function handleTargetChange({ target }) {
+    setSelectedTarget(target.value);
   }
 
   return (
@@ -51,7 +58,12 @@ export default function Index() {
           onChange={handleMessageChange}
         />
 
-        <RadioGroup title="Destino do link" options={targets} />
+        <RadioGroup
+          title="Destino do link"
+          options={targets}
+          name="target"
+          onChange={handleTargetChange}
+        />
 
         <PrimaryButton text="Gerar Link" disabled={buttonIsDisabled} />
       </Form>
