@@ -10,6 +10,7 @@ import targets from '../static/targets';
 import { applyPhoneMask } from '../controllers/phoneController';
 import axios from 'axios';
 import WhatsappLink from '../components/WhatsappLink';
+import GuidePopup from '../components/GuidePopup';
 
 export default function Index() {
   const [phone, setPhone] = useState('');
@@ -17,6 +18,7 @@ export default function Index() {
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
   const [whatsappLink, setWhatsappLink] = useState('');
   const [linkSectionIsVisible, setLinkSectionIsVisible] = useState(false);
+  const [guidePopupIsVisible, setGuidePopupIsVisible] = useState(false);
   const [selectedTarget, setSelectedTarget] = useState(() => {
     return targets.filter(({ isActive }) => isActive)[0].title;
   });
@@ -26,18 +28,15 @@ export default function Index() {
     setButtonIsDisabled(phoneOrMessageAreEmpty);
   }, [phone, message]);
 
-  function handlePhoneChange({ target }) {
-    const formatedPhone = applyPhoneMask(target.value);
-    setPhone(formatedPhone);
-  }
+  const handlePhoneChange = ({ target: { value } }) => setPhone(applyPhoneMask(value));
 
-  function handleMessageChange({ target }) {
-    setMessage(target.value);
-  }
+  const handleMessageChange = ({ target: { value } }) => setMessage(value);
 
-  function handleTargetChange({ target }) {
-    setSelectedTarget(target.value);
-  }
+  const handleTargetChange = ({ target: { value } }) => setSelectedTarget(value);
+  
+  const handleGuidePopupClose = () => setGuidePopupIsVisible(false);
+  
+  const handleHelpButtonClick = () => setGuidePopupIsVisible(true);
 
   async function handleFormSubmit(event) {
     event.preventDefault();
@@ -92,7 +91,9 @@ export default function Index() {
         <PrimaryButton text="Gerar Link" disabled={buttonIsDisabled} />
       </Form>
 
-      <HelpButton />
+      <HelpButton onClick={handleHelpButtonClick} />
+
+      {guidePopupIsVisible && <GuidePopup onClose={handleGuidePopupClose} />}
     </>
   );
 }

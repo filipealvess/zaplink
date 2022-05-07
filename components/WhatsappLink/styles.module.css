@@ -27,7 +27,7 @@
   background-color: #4DC6D7;
   text-transform: uppercase;
   opacity: 0;
-  transition: 0.2s opacity;
+  transition: 0.3s opacity;
 }
 
 .container.active::after {
