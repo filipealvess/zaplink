@@ -9,12 +9,14 @@ import RadioGroup from '../components/RadioGroup';
 import targets from '../static/targets';
 import { applyPhoneMask } from '../controllers/phoneController';
 import axios from 'axios';
+import WhatsappLink from '../components/WhatsappLink';
 
 export default function Index() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
   const [whatsappLink, setWhatsappLink] = useState('');
+  const [linkSectionIsVisible, setLinkSectionIsVisible] = useState(false);
   const [selectedTarget, setSelectedTarget] = useState(() => {
     return targets.filter(({ isActive }) => isActive)[0].title;
   });
@@ -45,6 +47,9 @@ export default function Index() {
     });
 
     setWhatsappLink(response.data.link);
+    setLinkSectionIsVisible(true);
+    setPhone('');
+    setMessage('');
   }
 
   return (
@@ -81,6 +86,8 @@ export default function Index() {
           name="target"
           onChange={handleTargetChange}
         />
+
+        {linkSectionIsVisible && <WhatsappLink link={whatsappLink} />}
 
         <PrimaryButton text="Gerar Link" disabled={buttonIsDisabled} />
       </Form>

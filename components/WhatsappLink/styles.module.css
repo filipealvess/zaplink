@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  padding: 10px 15px;
+  border: 2px solid #4DC6D7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container:hover::after {
+  opacity: 1;
+}
+
+.container::after {
+  content: 'Copiar';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4DC6D7;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: 0.2s opacity;
+}
+
+.container.active::after {
+  content: 'Copiado!';
+}
+
+.link {
+  color: #4DC6D7;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.copyButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  padding: 10px;
+  background-color: #212A3B;
+}
+
+.copyButton::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 50px;
+  height: 100%;
+  background-image: linear-gradient(to left, #212A3B, #212A3B00);
+}
