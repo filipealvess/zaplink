@@ -8,11 +8,13 @@ import PrimaryButton from '../components/PrimaryButton';
 import RadioGroup from '../components/RadioGroup';
 import targets from '../static/targets';
 import { applyPhoneMask } from '../controllers/phoneController';
+import axios from 'axios';
 
 export default function Index() {
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
+  const [whatsappLink, setWhatsappLink] = useState('');
   const [selectedTarget, setSelectedTarget] = useState(() => {
     return targets.filter(({ isActive }) => isActive)[0].title;
   });
@@ -35,6 +37,16 @@ export default function Index() {
     setSelectedTarget(target.value);
   }
 
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const response = await axios.get('/api/link', {
+      params: { phone, message, target: selectedTarget }
+    });
+
+    setWhatsappLink(response.data.link);
+  }
+
   return (
     <>
       <Head>
@@ -47,7 +59,7 @@ export default function Index() {
 
       <Introduction />
 
-      <Form>
+      <Form onSubmit={handleFormSubmit}>
         <Input
           label="Número do celular"
           placeholder="(DDD) 0000-0000"
