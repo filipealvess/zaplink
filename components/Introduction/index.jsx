@@ -12,7 +12,7 @@ export default function Introduction() {
         height={80}
       />
       <h1 className={styles.title}>ZapLink</h1>
-      <p className={styles.description}>Gerador de link para Whatsapp</p>
+      <p className={styles.description}>Gerador de link para WhatsApp</p>
     </header>
   );
 }

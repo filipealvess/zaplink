@@ -57,10 +57,10 @@ export default function Index() {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Crie links e divulgue pelo aplicativo ou versão web do Whatsapp" />
+        <meta name="description" content="Crie links e divulgue pelo aplicativo ou versão web do WhatsApp" />
         <meta name="keywords" content="Whatsapp, links, divulgação, alcance" />
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
-        <title>ZapLink - Gerador de link para Whatsapp</title>
+        <title>ZapLink - Gerador de link para WhatsApp</title>
       </Head>
 
       <Introduction />
@@ -68,7 +68,7 @@ export default function Index() {
       <Form onSubmit={handleFormSubmit}>
         <Input
           label="Número do celular"
-          placeholder="(DDD) 0000-0000"
+          placeholder="(DDD) 00000-0000"
           type="tel"
           value={phone}
           onChange={handlePhoneChange}

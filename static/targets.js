@@ -7,7 +7,7 @@ const targets = [
   },
   {
     id: 1,
-    title: 'Whatsapp Web',
+    title: 'WhatsApp Web',
     isActive: false,
     subdomain: 'web'
   }

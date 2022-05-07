@@ -27,7 +27,7 @@ export default function GuidePopup({ onClose = () => {} }) {
         <ol className={styles.list}>
           <li><span>1.</span> Insira o número do WhatsApp</li>
           <li><span>2.</span> Escreva a mensagem que será exibida</li>
-          <li><span>3.</span> Selecione onde o link será compartilhado (aplicativo ou Whatsapp web)</li>
+          <li><span>3.</span> Selecione onde o link será compartilhado (aplicativo ou WhatsApp web)</li>
           <li><span>4.</span> Clique em &#34;GERAR LINK&#34;</li>
           <li><span>5.</span> Copie o link e compartilhe</li>
         </ol>
