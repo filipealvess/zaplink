@@ -13,12 +13,13 @@ export default function RadioGroup({
       <p className={styles.title}>{title}:</p>
 
       <section className={styles.options}>
-        {options.map(({ id, title, isActive }) => (
+        {options.map(({ id, title, isActive, short }) => (
           <RadioButton
             key={id}
             label={title}
             checked={isActive}
             name={name}
+            value={short}
             onChange={onChange}
           />
         ))}

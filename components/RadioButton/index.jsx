@@ -5,7 +5,8 @@ export default function RadioButton({
   label,
   checked = false,
   onChange = () => {},
-  name
+  name,
+  value
 }) {
   return (
     <label>
@@ -14,7 +15,7 @@ export default function RadioButton({
         defaultChecked={checked}
         name={name}
         onChange={onChange}
-        value={label}
+        value={value}
       />
 
       <span className={styles.label}>{label}</span>

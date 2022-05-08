@@ -20,7 +20,7 @@ export default function Index() {
   const [linkSectionIsVisible, setLinkSectionIsVisible] = useState(false);
   const [guidePopupIsVisible, setGuidePopupIsVisible] = useState(false);
   const [selectedTarget, setSelectedTarget] = useState(() => {
-    return targets.filter(({ isActive }) => isActive)[0].title;
+    return targets.filter(({ isActive }) => isActive)[0].short;
   });
 
   useEffect(() => {
