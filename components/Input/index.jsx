@@ -6,11 +6,14 @@ export default function Input({
   placeholder,
   label,
   value = '',
+  description,
   onChange = () => {}
 }) {
   return (
     <label className={styles.container}>
-      <span className={styles.label}>{label}:</span>
+      <span>{label}:</span>
+
+      {description && <p className={styles.description}>{description}</p>}
 
       <input
         type={type}

@@ -10,6 +10,10 @@
 - Adição de animações
 - Criação da API
 
+**Dia #4** _(08/05)_:
+- Refatoração do código
+- Melhorias na experiência do usuário (UX)
+
 ---
 
 **🔥 Tempo investido na solução:** 15 horas (aproximado)

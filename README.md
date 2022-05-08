@@ -3,7 +3,7 @@ Gerador de link para WhatsApp criado como solução para desafio de vaga de dese
 
 Quer testar? [Clique aqui](https://zaplink.vercel.app/) para ver a aplicação online.
 
-Para ver quanto tempo foi investido na solução do desafio, consulte o arquivo [`programmingSchedule.md`](/programmingSchedule.md).
+Para ver quanto tempo foi investido na solução do desafio, consulte o arquivo [`schedule.md`](/schedule.md).
 
 ![Capa](https://user-images.githubusercontent.com/63798776/167276495-74fd7e56-6210-4c8d-8fef-b45a9e2ddd0b.png)
 

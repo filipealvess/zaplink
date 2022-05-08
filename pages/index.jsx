@@ -72,6 +72,7 @@ export default function Index() {
           type="tel"
           value={phone}
           onChange={handlePhoneChange}
+          description="Digite apenas números [ ex.: (82) 98188-8888 ]"
         />
 
         <Input
@@ -79,6 +80,7 @@ export default function Index() {
           placeholder="Escreva o texto..."
           value={message}
           onChange={handleMessageChange}
+          description="Digite uma ou duas boas frases ;)"
         />
 
         <RadioGroup
