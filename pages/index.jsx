@@ -1,16 +1,16 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import Form from '../components/Form';
-import HelpButton from '../components/HelpButton';
-import Input from '../components/Input';
-import Introduction from '../components/Introduction';
-import PrimaryButton from '../components/PrimaryButton';
-import RadioGroup from '../components/RadioGroup';
-import targets from '../static/targets';
-import { applyPhoneMask, phoneIsCompleted } from '../controllers/phoneController';
 import axios from 'axios';
-import WhatsappLink from '../components/WhatsappLink';
-import GuidePopup from '../components/GuidePopup';
+import Form from '../src/components/Form';
+import HelpButton from '../src/components/HelpButton';
+import Input from '../src/components/Input';
+import Introduction from '../src/components/Introduction';
+import PrimaryButton from '../src/components/PrimaryButton';
+import RadioGroup from '../src/components/RadioGroup';
+import targets from '../src/static/targets';
+import { applyPhoneMask, phoneIsCompleted } from '../src/controllers/phoneController';
+import WhatsappLink from '../src/components/WhatsappLink';
+import GuidePopup from '../src/components/GuidePopup';
 
 export default function Index() {
   const [phone, setPhone] = useState('');
@@ -19,35 +19,27 @@ export default function Index() {
   const [whatsappLink, setWhatsappLink] = useState('');
   const [linkSectionIsVisible, setLinkSectionIsVisible] = useState(false);
   const [guidePopupIsVisible, setGuidePopupIsVisible] = useState(false);
-  const [selectedTarget, setSelectedTarget] = useState(() => {
-    return targets.filter(({ isActive }) => isActive)[0].short;
-  });
+  const [selectedTarget, setSelectedTarget] = useState(() => (
+    targets.find(({ isActive }) => isActive).short
+  ));
+  const [buttonText, setButtonText] = useState('Gerar Link');
 
   useEffect(() => {
-    const phoneOrMessageAreEmpty = phone === '' || message === '';
-    const phoneIsNotCompleted = !phoneIsCompleted(phone);
-
-    setButtonIsDisabled(phoneOrMessageAreEmpty || phoneIsNotCompleted);
-  }, [phone, message]);
-
-  const handlePhoneChange = ({ target: { value } }) => setPhone(applyPhoneMask(value));
-
-  const handleMessageChange = ({ target: { value } }) => setMessage(value);
-
-  const handleTargetChange = ({ target: { value } }) => setSelectedTarget(value);
-  
-  const handleGuidePopupClose = () => setGuidePopupIsVisible(false);
-  
-  const handleHelpButtonClick = () => setGuidePopupIsVisible(true);
+    setButtonIsDisabled(phone === '' || !phoneIsCompleted(phone));
+  }, [phone]);
 
   async function handleFormSubmit(event) {
     event.preventDefault();
 
-    const response = await axios.get('/api/link', {
+    setButtonText('...');
+    setButtonIsDisabled(true);
+
+    const { data } = await axios.get('/api/link', {
       params: { phone, message, target: selectedTarget }
     });
 
-    setWhatsappLink(response.data.link);
+    setButtonText('Gerar link');
+    setWhatsappLink(data.link);
     setLinkSectionIsVisible(true);
     setPhone('');
     setMessage('');
@@ -71,7 +63,7 @@ export default function Index() {
           placeholder="(DDD) 00000-0000"
           type="tel"
           value={phone}
-          onChange={handlePhoneChange}
+          onChange={({ target }) => setPhone(applyPhoneMask(target.value))}
           description="Digite apenas números [ ex.: (82) 98188-8888 ]"
         />
 
@@ -79,7 +71,7 @@ export default function Index() {
           label="Mensagem"
           placeholder="Escreva o texto..."
           value={message}
-          onChange={handleMessageChange}
+          onChange={({ target }) => setMessage(target.value)}
           description="Digite uma ou duas boas frases ;)"
         />
 
@@ -87,17 +79,19 @@ export default function Index() {
           title="Destino do link"
           options={targets}
           name="target"
-          onChange={handleTargetChange}
+          onChange={({ target }) => setSelectedTarget(target.value)}
         />
 
         {linkSectionIsVisible && <WhatsappLink link={whatsappLink} />}
 
-        <PrimaryButton text="Gerar Link" disabled={buttonIsDisabled} />
+        <PrimaryButton text={buttonText} disabled={buttonIsDisabled} />
       </Form>
 
-      <HelpButton onClick={handleHelpButtonClick} />
+      <HelpButton onClick={() => setGuidePopupIsVisible(true)} />
 
-      {guidePopupIsVisible && <GuidePopup onClose={handleGuidePopupClose} />}
+      {guidePopupIsVisible && (
+        <GuidePopup onClose={() => setGuidePopupIsVisible(false)} />
+      )}
     </>
   );
 }
