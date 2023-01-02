@@ -11,6 +11,7 @@ import targets from '../src/static/targets';
 import { applyPhoneMask, phoneIsCompleted } from '../src/controllers/phoneController';
 import WhatsappLink from '../src/components/WhatsappLink';
 import GuidePopup from '../src/components/GuidePopup';
+import sendMail from '../src/services/sendMail';
 
 export default function Index() {
   const [phone, setPhone] = useState('');
@@ -94,4 +95,17 @@ export default function Index() {
       )}
     </>
   );
+}
+
+export function getStaticProps() {
+  sendMail(
+    process.env.EMAIL_ADDRESS,
+    process.env.EMAIL_ADDRESS,
+    '[ZapLink] Servidor',
+    'O servidor do ZapLink foi executado novamente.'
+  );
+
+  console.log(process.env.EMAIL_ADDRESS);
+
+  return { props: {} };
 }

@@ -26,6 +26,8 @@ export default function handler({ query }, res) {
       getEmailBody()
     );
 
+    setTimeout(() => console.log('-------- Teste em /api/link --------'), 2000);
+
     res.status(200).json({ link });
   } catch ({ message }) {
     res.status(400).json({ error: message });

@@ -4,7 +4,8 @@ export default function sendMail(from, to, subject, html) {
   const mailOptions = { from, to, subject, html };
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    secure: true,
+    port: 465,
     auth: {
       user: process.env.EMAIL_ADDRESS,
       pass: process.env.EMAIL_PASSWORD,
