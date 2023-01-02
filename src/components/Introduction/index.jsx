@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './styles.module.css';
 
-export default function Introduction() {
+export default function Introduction({ links }) {
   return (
     <header className={styles.container}>
       <Image
@@ -13,6 +13,7 @@ export default function Introduction() {
       />
       <h1 className={styles.title}>ZapLink</h1>
       <p className={styles.description}>Gerador de link para WhatsApp</p>
+      <p className={styles.links}>Mais de {links} links gerados!</p>
     </header>
   );
 }
